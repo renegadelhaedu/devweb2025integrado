@@ -7,7 +7,7 @@ app = Flask(__name__)
 #criando uma rota endpoint
 @app.route('/')
 def pagina_principal():
-    return render_template('minhasfesta.html')
+    return render_template('nova.html')
 
 @app.route('/maisinfo')
 def saber_suino():

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Web</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+
+        header {
+            background-color: red;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            font-size: 40px;
+            border: 4px solid black;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        aside {
+            width: 200px;
+            border: 3px solid black;
+            padding: 20px;
+            text-align: center;
+        }
+
+        aside h2 {
+            margin-bottom: 20px;
+        }
+
+        aside button {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border: 3px solid black;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        main {
+            flex: 1;
+            padding: 0 30px;
+        }
+
+        .conteudo {
+            font-size: 25px;
+            line-height: 2em;
+        }
+
+        .links {
+            width: 200px;
+            border: 3px solid black;
+            padding: 20px;
+            font-size: 25px;
+        }
+
+        .links a {
+            display: block;
+            margin-bottom: 30px;
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Sistema Web
+    </header>
+
+    <div class="container">
+        <aside>
+            <h2>Menu</h2>
+            <button>opção 1</button>
+            <button>opção 2</button>
+            <button>opção 3</button>
+            <button>opção 4</button>
+        </aside>
+
+        <main>
+            <div class="conteudo">
+                este sistema faz isso e aquilo sdfçk sdfasd <br>
+                f <br>
+                asd <br>
+                f <br>
+                asd <br>
+                f asdsdfsdfsd sd  sfd sdf
+            </div>
+        </main>
+
+        <div class="links">
+            <a href="/cadastrarusuario">Cadastrar novo usuário</a>
+            <a href="#">link 2</a>
+            <a href="#">link 3</a>
+            <a href="#">link 4</a>
+        </div>
+    </div>
+</body>
+</html>
