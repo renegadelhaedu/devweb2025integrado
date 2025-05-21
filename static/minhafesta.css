@@ -1,11 +1,12 @@
 body{
     background-color: lightcyan;
 }
+
 .principal{
     background-color: pink;
     text-align: center;
     color: orangered;
-    }
+}
 .principal p{
     color:green;
 }

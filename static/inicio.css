@@ -1,0 +1,15 @@
+body{
+    background-color: black;
+
+}
+.um{
+    background-color: red;
+    margin-top: 200px;
+    border: ridge 5px white;
+}
+.dois{
+    background-color: blue;
+}
+.tres{
+    background-color: green;
+}
