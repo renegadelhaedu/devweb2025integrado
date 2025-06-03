@@ -1,0 +1,23 @@
+.quadrado{
+    margin-left: 28%;
+    margin-top: 150px;
+    padding-top: 30px;
+    display:flex;
+    background-color: lavender;
+    width: 300px;
+    height: 150px;
+    border: solid 1px purple;
+    border-radius: 2px;
+    text-align: center;
+    align-items: center;
+}
+
+.quadrado input{
+    margin-top: 5px;
+}
+
+.quadrado p{
+    width: 100%;
+    color: red;
+    font-size: 12px;
+}
