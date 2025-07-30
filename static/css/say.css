@@ -1,0 +1,16 @@
+body{
+    background-color: darkred;
+}
+
+.topo{
+    color: white;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+}
+.corpo{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
