@@ -1,0 +1,10 @@
+.camposenha{
+    border: solid 2px darkred;
+    border-radius: 8px;
+    margin-left: 45%;
+    margin-top:300px;
+    width: 200px;
+    height: 55px;
+    padding-top: 5px;
+    padding-left:25px;
+}
