@@ -1,7 +1,7 @@
 from flask import *
 
 app = Flask(__name__)
-crushs = ['jose','roberto','caio','italo','miguel']
+crushs = []
 
 @app.route('/')
 def home_page():
@@ -14,11 +14,34 @@ def mostrar_pag_senha():
 @app.route('/verificarsenha', methods=['post'])
 def verificar_senha():
     senha = request.form.get('senha')
-    if senha == 'sayonara2007':
+    if senha == 'sa':
         return render_template('logado.html')
     else:
         return render_template('say.html')
 
+@app.route('/adicionar', methods=['post'])
+def adicionar_crush():
+    #torna a variável modificável no escopo global
+    global crushs
+    nome = request.form.get('nome')
+    #adicionar dentro da lista
+    crushs.append(nome)
+    mensagem = nome + ' foi adicionado com sucesso'
+    return render_template('logado.html', msg=mensagem)
+
+
+@app.route('/remover', methods=['post'])
+def remover_crush():
+    #torna a variável modificável no escopo global
+    global crushs
+    nome = request.form.get('nome')
+    if nome in crushs:
+        crushs.remove(nome)
+
+    else:
+        msg = 'nao consta na lista de crushs'
+
+    return render_template('logado.html')
 
 
 @app.route('/acharamor', methods=['post'])

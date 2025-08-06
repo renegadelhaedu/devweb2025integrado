@@ -5,7 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>é tu mesmo sayonara. uhuuuu</h1>
+    <h1>Página ADMIN de Sayonara</h1>
+    <hr><br>
+    <p>{{msg}}</p>
+    <form action="/adicionar" method="post">
+        <h2>Adicionar crush</h2>
+        <input name="nome" placeholder="digite o nome">
+        <button>Enviar</button>
+    </form>
+    <br><hr><br>
+    <form action="/remover" method="post">
+        <h2>Remover crush</h2>
+        <input name="nome" placeholder="digite o nome">
+        <button>Enviar</button>
+    </form>
 
 </body>
 </html>
