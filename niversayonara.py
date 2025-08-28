@@ -2,6 +2,7 @@ from flask import *
 
 app = Flask(__name__)
 crushs = []
+usuarios = []
 
 @app.route('/')
 def home_page():
@@ -28,6 +29,20 @@ def adicionar_crush():
     crushs.append(nome)
     mensagem = nome + ' foi adicionado com sucesso'
     return render_template('logado.html', msg=mensagem)
+
+
+@app.route('/adicionarusuario', methods=['post'])
+def adicionar_usuario():
+    #torna a variável modificável no escopo global
+    global usuarios
+    nome = request.form.get('nome')
+    senha = request.form.get('senha')
+    email = request.form.get('email')
+
+    usuarios.append([nome, senha, email])
+    mensagem = nome + ' foi adicionado com sucesso'
+    return render_template('logado.html', msg=mensagem)
+
 
 
 @app.route('/remover', methods=['post'])
