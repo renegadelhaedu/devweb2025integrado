@@ -9,17 +9,17 @@ pessoa = 'Evilly'
 def home_page():
     return render_template('say.html')
 
-@app.route('/administradora')
-def mostrar_pag_senha():
-    return render_template('saysenha.html')
-
-@app.route('/verificarsenha', methods=['post'])
+@app.route('/verificarsenha', methods=['post','get'])
 def verificar_senha():
-    senha = request.form.get('senha')
-    if senha == 'sa':
-        return render_template('logado.html')
+
+    if request.method == 'GET':
+        return render_template('saysenha.html')
     else:
-        return render_template('say.html')
+        senha = request.form.get('senha')
+        if senha == 'sa':
+            return render_template('logado.html')
+        else:
+            return render_template('say.html')
 
 @app.route('/adicionar', methods=['post'])
 def adicionar_crush():
