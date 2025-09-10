@@ -1,8 +1,9 @@
 from flask import *
 
 app = Flask(__name__)
-crushs = []
+crushs = ['mateus kaio','diego','pedro','luis antonio','miguel']
 usuarios = []
+pessoa = 'Evilly'
 
 @app.route('/')
 def home_page():
@@ -57,6 +58,11 @@ def remover_crush():
         msg = 'nao consta na lista de crushs'
 
     return render_template('logado.html')
+
+@app.route('/listarcrushs', methods=['get'])
+def listar_cruchs():
+    if len(crushs) > 0:
+        return render_template('listarcrushs.html', lista=crushs, pessoa=pessoa)
 
 
 @app.route('/acharamor', methods=['post'])
