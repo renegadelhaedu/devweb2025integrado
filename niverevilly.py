@@ -1,7 +1,8 @@
 from flask import *
 
 app = Flask(__name__)
-crushs = ['mateus kaio','diego','pedro','luis antonio','miguel']
+crushs = []
+
 usuarios = []
 pessoa = 'Evilly'
 
@@ -26,8 +27,11 @@ def adicionar_crush():
     #torna a variável modificável no escopo global
     global crushs
     nome = request.form.get('nome')
-    #adicionar dentro da lista
-    crushs.append(nome)
+    idade = request.form.get('idade')
+    insta = request.form.get('insta')
+    cidade = request.form.get('cidade')
+
+    crushs.append([nome, idade, insta, cidade])
     mensagem = nome + ' foi adicionado com sucesso'
     return render_template('logado.html', msg=mensagem)
 
@@ -63,6 +67,8 @@ def remover_crush():
 def listar_cruchs():
     if len(crushs) > 0:
         return render_template('listarcrushs.html', lista=crushs, pessoa=pessoa)
+    else:
+        return render_template('listarcrushs.html',  pessoa=pessoa)
 
 
 @app.route('/acharamor', methods=['post'])

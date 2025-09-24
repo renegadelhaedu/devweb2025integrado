@@ -6,9 +6,12 @@
 </head>
 <body>
     <h1>Aqui estão os crushs de nossa amiga {{pessoa}}</h1>
-    <hr>
-    {% for amor in lista %}
-    <p>{{amor}}</p>
-    {% endfor %}
+    {% if lista %}
+        <hr>
+        {% for amor in lista %}
+            <p>Nome:{{amor[0]}}</p>
+            <hr>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>
