@@ -79,5 +79,18 @@ def verificar_amado():
     else:
         return render_template('saynao.html')
 
+
+@app.route('/detalhes')
+def mostrar_detalhes():
+    insta = request.values.get('insta')
+    achei = None
+    for user in crushs:
+        if insta == user[2]:
+            achei = user
+            break
+
+    return render_template('detalhescrush.html', usuario=achei)
+
+
 if __name__ == '__main__':
     app.run()

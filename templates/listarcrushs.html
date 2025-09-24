@@ -9,7 +9,14 @@
     {% if lista %}
         <hr>
         {% for amor in lista %}
-            <p>Nome:{{amor[0]}}</p>
+            <p>
+                Nome:
+                <a href="/detalhes?insta={{amor[2]}}">
+                    {{amor[0]}}
+                </a>
+
+
+            </p>
             <hr>
         {% endfor %}
     {% endif %}
