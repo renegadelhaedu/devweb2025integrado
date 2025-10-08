@@ -15,11 +15,15 @@ body{
     text-align: center;
 }
 
+.menusup{
+    display: flex;
+}
 .botao-link {
+       margin-left: 10px;
       display: inline-block;
       padding: 12px 24px;
-      background-color: #4CAF50;
-      color: white;
+      background-color: white;
+      color: darkred;
       text-decoration: none;
       font-size: 16px;
       border-radius: 8px;

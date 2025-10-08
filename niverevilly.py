@@ -1,6 +1,7 @@
 from flask import *
 
 app = Flask(__name__)
+app.secret_key = 'KJH#45K45JHQASs'
 crushs = []
 
 usuarios = []
@@ -10,14 +11,21 @@ pessoa = 'Evilly'
 def home_page():
     return render_template('say.html')
 
+@app.route('/cadastrocrush')
+def cadastro_crush():
+        return render_template('cadastrocrush.html')
+
+
 @app.route('/verificarsenha', methods=['post','get'])
 def verificar_senha():
 
     if request.method == 'GET':
         return render_template('saysenha.html')
     else:
+        login = request.form.get('login')
         senha = request.form.get('senha')
-        if senha == 'sa':
+        if login == 'admin' and senha == '123':
+            session['login'] = login
             return render_template('logado.html')
         else:
             return render_template('say.html')
@@ -65,11 +73,14 @@ def remover_crush():
 
 @app.route('/listarcrushs', methods=['get'])
 def listar_cruchs():
-    if len(crushs) > 0:
-        return render_template('listarcrushs.html', lista=crushs, pessoa=pessoa)
-    else:
-        return render_template('listarcrushs.html',  pessoa=pessoa)
 
+    if 'login' in session and session['login'] == 'admin':
+        if len(crushs) > 0:
+            return render_template('listarcrushs.html', lista=crushs, pessoa=pessoa)
+        else:
+            return render_template('listarcrushs.html',  pessoa=pessoa)
+    else:
+        return render_template('say.html')
 
 @app.route('/acharamor', methods=['post'])
 def verificar_amado():
