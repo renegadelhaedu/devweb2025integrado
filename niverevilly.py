@@ -1,8 +1,9 @@
 from flask import *
+from utils.auxiliares import *
 
 app = Flask(__name__)
 app.secret_key = 'KJH#45K45JHQASs'
-crushs = []
+crushs = [['pedro', 17, 'phrodrigues','santa cruz','phr','123']]
 
 usuarios = []
 pessoa = 'Evilly'
@@ -11,10 +12,48 @@ pessoa = 'Evilly'
 def home_page():
     return render_template('say.html')
 
-@app.route('/cadastrocrush')
-def cadastro_crush():
-        return render_template('cadastrocrush.html')
+@app.route('/logincrush', methods=['GET','POST'])
+def login_crush():
+    if request.method == 'GET':
+        return render_template('crush/logincrush.html')
 
+    login = request.form.get('login')
+    senha = request.form.get('senha')
+
+    if fazer_login_crush(login, senha, crushs):
+        session['crush'] = login
+        return render_template('crush/homepagecrush.html', login=login)
+    else:
+        msg = 'login ou senha incorretos'
+        return render_template('crush/logincrush.html', msg=msg)
+
+
+@app.route('/cadastrocrush', methods=['GET','POST'])
+def cadastro_crush():
+    if request.method == 'GET':
+        return render_template('crush/cadastrocrush.html')
+
+    global crushs
+
+    nome = request.form.get('nome')
+    idade = request.form.get('idade')
+    insta = request.form.get('insta')
+    cidade = request.form.get('cidade')
+    login = request.form.get('login')
+    senha = request.form.get('senha')
+
+    if not verificar_login_crush(login, crushs):
+        crushs.append([nome,idade,insta,cidade,login,senha])
+        return render_template('crush/logincrush.html')
+    else:
+        msg = 'login já existente'
+        return render_template('crush/logincrush.html', msg=msg)
+
+
+@app.route('/logout')
+def fazer_logout():
+    session.clear()
+    return render_template('say.html')
 
 @app.route('/verificarsenha', methods=['post','get'])
 def verificar_senha():
@@ -30,18 +69,6 @@ def verificar_senha():
         else:
             return render_template('say.html')
 
-@app.route('/adicionar', methods=['post'])
-def adicionar_crush():
-    #torna a variável modificável no escopo global
-    global crushs
-    nome = request.form.get('nome')
-    idade = request.form.get('idade')
-    insta = request.form.get('insta')
-    cidade = request.form.get('cidade')
-
-    crushs.append([nome, idade, insta, cidade])
-    mensagem = nome + ' foi adicionado com sucesso'
-    return render_template('logado.html', msg=mensagem)
 
 
 @app.route('/adicionarusuario', methods=['post'])
@@ -60,6 +87,10 @@ def adicionar_usuario():
 
 @app.route('/remover', methods=['post'])
 def remover_crush():
+
+    if 'login' not in session:
+        return render_template('say.html')
+    
     #torna a variável modificável no escopo global
     global crushs
     nome = request.form.get('nome')
@@ -95,6 +126,7 @@ def verificar_amado():
 def mostrar_detalhes():
     insta = request.values.get('insta')
     achei = None
+    print(session['login'])
     for user in crushs:
         if insta == user[2]:
             achei = user
